@@ -11,6 +11,9 @@ private:
 public:
 	void addTransaction(const Transaction& transaction);
 	void printAllTransactions() const;
+
+	void saveToFile() const;
+	void loadFromFile();
 };
 
 #endif

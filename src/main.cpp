@@ -4,6 +4,8 @@
 
 int main() {
 	FinanceManager manger;
+	manger.loadFromFile();
+
 	int choice;
 
 	while (true) {
@@ -47,6 +49,7 @@ int main() {
 			);
 
 			manger.addTransaction(newTransaction);
+			manger.saveToFile();
 
 			std::cout << "Transaction added successfully.\n";
 		}
