@@ -1,3 +1,4 @@
+#include <sstream>
 #include <iostream>
 #include <fstream>
 #include "FinanceManager.h"
@@ -21,10 +22,10 @@ void FinanceManager::saveToFile() const {
 	std::ofstream file("transactions.txt");
 
 	for (const Transaction& t : transactions) {
-		file << t.getAmount() << " "
-		     << t.getCategory() << " "
-		     << t.getType() << " "
-		     << t.getDescription() << " "
+		file << t.getAmount() << ","
+		     << t.getCategory() << ","
+		     << t.getType() << ","
+		     << t.getDescription() << ","
 		     << t.getDate() << "\n";
 	}
 	
@@ -34,15 +35,28 @@ void FinanceManager::saveToFile() const {
 void FinanceManager::loadFromFile() {
 	std::ifstream file("transaction.txt");
 
-	double amount;
-	std::string category;
-	std::string type;
-	std::string description;
-	std::string date;
+	std::string line;
 
-	while (file >> amount >> category >> type >> description >> date) {
+	while (std::getline(file, line)) {
+		std::stringstream ss(line);
+
+	        std::string amountStr;
+	        std::string category;
+	        std::string type;
+	        std::string description;
+	        std::string date;
+
+		std::getline(ss, amountStr, ',');
+		std::getline(ss, category, ',');
+		std::getline(ss, type, ',');
+		std::getline(ss, description, ',');
+		std::getline(ss, date, ',');
+
+		double amount = std::stod(amountStr);
+
 		Transaction t(amount, category, type, description, date);
 		transactions.push_back(t);
+
 	}
 
 	file.close();
