@@ -12,7 +12,8 @@ int main() {
 		std::cout << "\n=== Personal Finance Tracker ===\n";
 		std::cout << "1. Add transaction\n";
 		std::cout << "2. Show all transaction\n";
-		std::cout << "3. Exit\n";
+		std::cout << "3. Show balance\n";
+		std::cout << "4. Exit\n";
 		std::cout << "Choose option: ";
 		std::cin >> choice;
 
@@ -27,14 +28,15 @@ int main() {
 			std::cout << "Enter amount: ";
 			std::cin >> amount;
 
+			std::cin.ignore();
+
 			std::cout << "Enter category: ";
-			std::cin >> category;
+			std::getline(std::cin, category);
 
 			std::cout << "Enter type (income/expense): ";
-			std::cin >> type;
+			std::getline(std::cin, type);
 
 			std::cout << "Enter description: ";
-			std::cin.ignore();
 			std::getline(std::cin, description);
 
 			std::cout << "Enter date (YYYY-MM-DD): ";
@@ -59,6 +61,10 @@ int main() {
 		}
 
 		else if (choice == 3) {
+			manger.showBalance();
+		}
+
+		else if (choice == 4) {
 			std::cout << "Eciting program...\n";
 			break;
 		}

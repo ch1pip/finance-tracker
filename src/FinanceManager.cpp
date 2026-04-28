@@ -18,6 +18,25 @@ void FinanceManager::printAllTransactions() const {
 	}
 }
 
+void FinanceManager::showBalance() const {
+	double income = 0.0;
+	double expense = 0.0;
+
+	for (const Transaction& t : transactions) {
+		if (t.getType() == "income") {
+			income += t.getAmount();
+		}
+		else if (t.getType() == "expense") {
+			expense += t.getAmount();
+		}
+	}
+
+	std::cout << "\n=== Balance Summary ===\n";
+	std::cout << "Total Income: " << income << std::endl;
+	std::cout << "Total Expense: " << expense << std::endl;
+	std::cout << "Current Balance: " << income - expense << std::endl;
+}
+
 void FinanceManager::saveToFile() const {
 	std::ofstream file("transactions.txt");
 
