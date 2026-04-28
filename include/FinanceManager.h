@@ -14,6 +14,7 @@ public:
 	void saveToFile() const;
 	void loadFromFile();
 	void showBalance() const;
+	void filterByCategory(const std::string& category) const;
 };
 
 #endif

@@ -37,6 +37,27 @@ void FinanceManager::showBalance() const {
 	std::cout << "Current Balance: " << income - expense << std::endl;
 }
 
+void FinanceManager::filterByCategory(const std::string& category) const {
+	bool found = false;
+
+	for (const Transaction& t : transactions) {
+		if (t.getCategory() == category) {
+			std::cout << "Amount: " << t.getAmount() << std::endl;
+			std::cout << "Category: " << t.getCategory() << std::endl;
+			std::cout << "Type: " << t.getType() << std:: endl;
+			std::cout << "Description: " << t.getDescription() << std::endl;
+			std::cout << "Date: " << t.getDate() << std::endl;
+			std::cout << "-------------------" << std::endl;
+
+			found = true;
+		}
+	}
+
+	if (!found) {
+		std::cout << "No transactions found for category: " << category << std::endl;
+	}
+}
+
 void FinanceManager::saveToFile() const {
 	std::ofstream file("transactions.txt");
 

@@ -13,7 +13,8 @@ int main() {
 		std::cout << "1. Add transaction\n";
 		std::cout << "2. Show all transaction\n";
 		std::cout << "3. Show balance\n";
-		std::cout << "4. Exit\n";
+		std::cout << "4. Filter by category\n";
+		std::cout << "5. Exit\n";
 		std::cout << "Choose option: ";
 		std::cin >> choice;
 
@@ -65,6 +66,16 @@ int main() {
 		}
 
 		else if (choice == 4) {
+			std::string searchCategory;
+
+			std::cout << "Enter category to search: ";
+			std::cin.ignore();
+			std::getline(std::cin, searchCategory);
+
+			manger.filterByCategory(searchCategory);
+		}
+
+		else if (choice == 5) {
 			std::cout << "Eciting program...\n";
 			break;
 		}
