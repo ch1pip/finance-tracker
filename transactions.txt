@@ -1,2 +1,2 @@
-30000,income,income,income,2026-04-26
-1500,food,expense,food spending,2026-04-27
+500,popa,income,sasha dal mne popu,2006-08-25
+20,pisya,expense,sasha potratil pisyu,2003-07-31

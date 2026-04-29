@@ -15,6 +15,7 @@ public:
 	void loadFromFile();
 	void showBalance() const;
 	void filterByCategory(const std::string& category) const;
+	void deleteTransaction(int index);
 };
 
 #endif

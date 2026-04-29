@@ -14,7 +14,8 @@ int main() {
 		std::cout << "2. Show all transaction\n";
 		std::cout << "3. Show balance\n";
 		std::cout << "4. Filter by category\n";
-		std::cout << "5. Exit\n";
+		std::cout << "5. Delete transaction\n";
+		std::cout << "6. Exit\n";
 		std::cout << "Choose option: ";
 		std::cin >> choice;
 
@@ -76,6 +77,15 @@ int main() {
 		}
 
 		else if (choice == 5) {
+			int index;
+
+			std::cout << "Enter transaction idex to delete: ";
+			std::cin >> index;
+
+			manger.deleteTransaction(index);
+		}
+
+		else if (choice == 6) {
 			std::cout << "Eciting program...\n";
 			break;
 		}

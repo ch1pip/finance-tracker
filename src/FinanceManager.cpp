@@ -8,7 +8,10 @@ void FinanceManager::addTransaction(const Transaction& transaction) {
 }
 
 void FinanceManager::printAllTransactions() const {
-	for (const Transaction& t : transactions) {
+	for (size_t i = 0; i < transactions.size(); i++) {
+		const Transaction& t = transactions[i];
+
+		std::cout << "Index: " << i << std::endl;
 		std::cout << "Anount: " << t.getAmount() << std::endl;
 		std::cout << "Category: " << t.getCategory() << std::endl;
 		std::cout << "Type: " << t.getType() << std::endl;
@@ -56,6 +59,18 @@ void FinanceManager::filterByCategory(const std::string& category) const {
 	if (!found) {
 		std::cout << "No transactions found for category: " << category << std::endl;
 	}
+}
+
+void FinanceManager::deleteTransaction(int index) {
+	if (index < 0 || index >= transactions.size()) {
+		std::cout << "Invalid transaction index." << std::endl;
+	}
+
+	transactions.erase(transactions.begin() + index);
+
+	saveToFile();
+
+	std::cout << "Transaction deleted successfully." << std::endl;
 }
 
 void FinanceManager::saveToFile() const {
