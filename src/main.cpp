@@ -15,6 +15,7 @@ int main() {
 		std::cout << "3. Show balance\n";
 		std::cout << "4. Filter by category\n";
 		std::cout << "5. Delete transaction\n";
+		std::cout << "6. Show monthly status\n";
 		std::cout << "6. Exit\n";
 		std::cout << "Choose option: ";
 		std::cin >> choice;
@@ -86,6 +87,15 @@ int main() {
 		}
 
 		else if (choice == 6) {
+			std::string month;
+
+			std::cout << "Enter mounth (MM): ";
+			std::cin >> month;
+
+			manger.showMonthlyStatus(month);
+		}
+
+		else if (choice == 7) {
 			std::cout << "Eciting program...\n";
 			break;
 		}

@@ -16,6 +16,7 @@ public:
 	void showBalance() const;
 	void filterByCategory(const std::string& category) const;
 	void deleteTransaction(int index);
+	void showMonthlyStatus(const std::string& month) const;
 };
 
 #endif

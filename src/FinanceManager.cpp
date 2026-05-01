@@ -73,6 +73,31 @@ void FinanceManager::deleteTransaction(int index) {
 	std::cout << "Transaction deleted successfully." << std::endl;
 }
 
+void FinanceManager::showMonthlyStatus(const std::string& month) const {
+	double income = 0.0;
+	double expense = 0.0;
+
+	for (const Transaction& t : transactions) {
+		std::string date = t.getDate();
+
+		std::string transactionMonth = date.substr(5, 2);
+
+		if (transactionMonth == month) {
+			if (t.getType() == "income") {
+				income += t.getAmount();
+		}
+			else if (t.getType() == "expense") {
+				expense += t.getAmount();
+			}
+	        }
+        }
+	
+	std::cout << "\n=== Monthly Status (" << month << ") ===\n";
+	std::cout << "Income: " << income << std::endl;
+	std::cout << "Expense: " << expense << std::endl;
+	std::cout << "Balance: " << income - expense << std::endl;
+}
+
 void FinanceManager::saveToFile() const {
 	std::ofstream file("transactions.txt");
 
