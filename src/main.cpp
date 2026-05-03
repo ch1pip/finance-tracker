@@ -29,7 +29,11 @@ int main() {
 			std::string date;
 
 			std::cout << "Enter amount: ";
-			std::cin >> amount;
+			while(!(std::cin, amount)) {
+				std::cin.clear();
+				std::cin.ignore(1000, '\n');
+				std::cout << "Invalid number. Enter amout again: ";
+			}
 
 			std::cin.ignore();
 
@@ -37,13 +41,33 @@ int main() {
 			std::getline(std::cin, category);
 
 			std::cout << "Enter type (income/expense): ";
-			std::getline(std::cin, type);
+			while (true) {
+				std::getline(std::cin, type);
+
+				for (char& c : type) {
+					c = std::tolower(c);
+				}
+
+				if (type == "income" || type == "expense") {
+					break;
+				}
+
+				std::cout << "Invalid type. Enter 'income' or 'expense': ";
+			}
 
 			std::cout << "Enter description: ";
 			std::getline(std::cin, description);
 
 			std::cout << "Enter date (YYYY-MM-DD): ";
-			std::getline(std::cin, date);
+			while (true) {
+				std::getline(std::cin, date);
+
+				if (date.length() == 10 && date[4] == '-' && date[7] == '-') {
+					break;
+				}
+
+				std::cout << "Invalid date firmat. Use YYYY-MM-DD: ";
+			}
 
 			Transaction newTransaction(
 					amount, 
